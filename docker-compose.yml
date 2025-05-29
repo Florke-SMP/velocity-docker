@@ -1,0 +1,12 @@
+services:
+  velocity:
+    image: velocity:latest
+    build: .
+    ports:
+      - "5060:25565"
+    volumes:
+      - velocity:/velocity
+
+volumes:
+  velocity:
+
