@@ -6,8 +6,12 @@ LABEL maintainer="Florke64"
 # Build Arguments #
 # # # # # # # # # #
 
+ARG BUILD_NO="521"
+ARG VELOCITY_VER="3.4.0"
+
 # Dedicated Velocity's build (URL to velocity.jar)
-ENV VELOCITY_URL="https://api.papermc.io/v2/projects/velocity/versions/3.4.0-SNAPSHOT/builds/509/downloads/velocity-3.4.0-SNAPSHOT-509.jar"
+# https://papermc.io/downloads/all
+ENV VELOCITY_URL="https://api.papermc.io/v2/projects/velocity/versions/${VELOCITY_VER}-SNAPSHOT/builds/${BUILD_NO}/downloads/velocity-${VELOCITY_VER}-SNAPSHOT-${BUILD_NO}.jar"
 
 COPY ./entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
