@@ -45,7 +45,7 @@ jobs:
           --build-arg VELOCITY_URL="$VELOCITY_URL" \
           --build-arg SHA256="$SHA256" \
           -t ghcr.io/florke-smp/velocity:latest \
-          -t ghcr.io/florke-smp/velocity:latest:$LATEST_VERSION \
+          -t ghcr.io/florke-smp/velocity:$LATEST_VERSION \
           .
 
         docker push ghcr.io/florke-smp/velocity:latest
