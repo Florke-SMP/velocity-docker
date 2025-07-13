@@ -6,13 +6,6 @@ LABEL maintainer="Florke64"
 # Build Arguments #
 # # # # # # # # # #
 
-ARG BUILD_NO="521"
-ARG VELOCITY_VER="3.4.0"
-
-# Dedicated Velocity's build (URL to velocity.jar)
-# https://papermc.io/downloads/all
-ENV VELOCITY_URL="https://api.papermc.io/v2/projects/velocity/versions/${VELOCITY_VER}-SNAPSHOT/builds/${BUILD_NO}/downloads/velocity-${VELOCITY_VER}-SNAPSHOT-${BUILD_NO}.jar"
-
 COPY ./entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
@@ -53,8 +46,20 @@ RUN mkdir -p /etc/apt/apt.conf.d && printf \
 	java-21-amazon-corretto-jdk \
 	libxi6 \
 	libxtst6 \
-	libxrender1 \
-&& wget -O /velocity.jar "${VELOCITY_URL}"
+	libxrender1
+
+# Get the Velocity JAR file
+# VELOCITY_URL is provided by .buildargs
+ARG VELOCITY_URL
+ARG SHA256
+
+# Debug output (optional)
+RUN echo "VELOCITY_URL: ${VELOCITY_URL}"
+RUN echo "SHA256: ${SHA256}"
+
+# Download and verify
+RUN wget -O /velocity.jar "${VELOCITY_URL}" && \
+    echo "${SHA256}  /velocity.jar" | sha256sum -c -
 
 RUN chmod +x /entrypoint.sh
 
