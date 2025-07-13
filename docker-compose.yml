@@ -1,13 +1,14 @@
 services:
   velocity:
-    image: ghcr.io/florke-smp/velocity:3.4.0-SNAPSHOT
+    image: ghcr.io/florke-smp/velocity:latest
     container_name: velocity
     restart: unless-stopped
+    network_mode: bridge
     
     ports:
-      - "25565:25565"
+      - "25565:25577"
     volumes:
-      - ./velocity:/velocity
+      - velocity:/velocity
 
 volumes:
   velocity:

@@ -12,6 +12,15 @@ Build script follows recommendations from official [PaperMC's documentation](htt
 
 See [example docker-compose.yml](docker-compose.yml) for the reference.
 
+Run container, exposing port `25565` (default Minecraft port):
+
+```bash
+docker run -d --name velocity \
+  -p 25565:25577 \
+  -v /srv/velocity:/velocity \
+  ghcr.io/florke-smp/velocity:latest
+```
+
 Available enviroment variables listed below:
 
 > TBD
