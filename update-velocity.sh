@@ -26,5 +26,6 @@ echo "Velocity SHA256: $SHA256"
 echo "Velocity URL: $VELOCITY_URL"
 
 # Save to .buildargs for use in dockerfile
-echo "VELOCITY_URL=$VELOCITY_URL" > .buildargs
+echo "LATEST_VERSION=$LATEST_VERSION" > .buildargs
+echo "VELOCITY_URL=$VELOCITY_URL" >> .buildargs
 echo "SHA256=$SHA256" >> .buildargs
