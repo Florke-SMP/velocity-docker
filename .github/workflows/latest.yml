@@ -1,4 +1,4 @@
-name: Build Latest Velocity Build
+name: Latest Velocity
 
 on:
   # Trigger every day at 2 AM UTC
@@ -30,7 +30,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
   
-    - name: Build the Docker image
+    - name: Build and push the Docker image
       run: |
         ./update-velocity.sh
 
@@ -44,16 +44,10 @@ jobs:
         docker build \
           --build-arg VELOCITY_URL="$VELOCITY_URL" \
           --build-arg SHA256="$SHA256" \
-          -t velocity:latest \
-          -t velocity:$(date +%Y%m%d-%H%M%S) \
+          -t ghcr.io/florke-smp/velocity:latest \
+          -t ghcr.io/florke-smp/velocity:latest:$LATEST_VERSION \
           .
-    
-    - name: Push to GitHub Container Registry
-      run: |
-        source .buildargs
 
-        docker tag velocity:latest ghcr.io/florke-smp/velocity:latest
-        docker tag ghcr.io/florke-smp/velocity:latest ghcr.io/florke-smp/velocity:$LATEST_VERSION
         docker push ghcr.io/florke-smp/velocity:latest
         docker push ghcr.io/florke-smp/velocity:$LATEST_VERSION
     
