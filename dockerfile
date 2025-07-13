@@ -1,5 +1,9 @@
 FROM ubuntu:24.04
 
+LABEL org.opencontainers.image.source="https://www.github.com/Florke-SMP/velocity-docker"
+LABEL org.opencontainers.image.description="Docker image for Velocity, a Minecraft proxy server."
+LABEL org.opencontainers.image.licenses="GPL-3.0"
+
 LABEL maintainer="Florke64"
 
 # # # # # # # # # #
