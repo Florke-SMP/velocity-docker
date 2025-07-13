@@ -4,7 +4,9 @@ Provides always the latest Velocity [build](https://papermc.io/downloads/all) fo
 
 ## About the image
 
-Image contains PaperMC's [Velocity](https://github.com/PaperMC/Velocity) jar, licensed under the [GPL-3.0](https://github.com/PaperMC/Velocity?tab=GPL-3.0-1-ov-file#readme).
+Image contains PaperMC's Velocity jar and Amazon's [Corretto](https://aws.amazon.com/corretto/) (OpenJDK) runtime.
+
+Build script follows recommendations from official [PaperMC's documentation](https://docs.papermc.io/.).
 
 ## Usage
 
@@ -16,4 +18,9 @@ Available enviroment variables listed below:
 
 ## License
 
-MIT
+Third party licenses:
+
+- Amazon's [Corretto 21](https://github.com/corretto/corretto-21), licensed under the [GPL-2.0](https://github.com/corretto/corretto-21?tab=GPL-2.0-1-ov-file#readme)
+- PaperMC's [Velocity](https://github.com/PaperMC/Velocity), licensed under the [GPL-3.0](https://github.com/PaperMC/Velocity?tab=GPL-3.0-1-ov-file#readme)
+
+Docker build script is licensed under [MIT](https://github.com/Florke-SMP/velocity-docker?tab=MIT-1-ov-file#readme) license.
