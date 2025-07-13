@@ -16,7 +16,7 @@ Run container, exposing port `25565` (default Minecraft port):
 
 ```bash
 docker run -d --name velocity \
-  -p 25565:25577 \
+  -p 25565:25565 \
   -v /srv/velocity:/velocity \
   ghcr.io/florke-smp/velocity:latest
 ```

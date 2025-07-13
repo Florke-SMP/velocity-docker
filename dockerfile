@@ -68,4 +68,4 @@ RUN wget -O /velocity.jar "${VELOCITY_URL}" && \
 RUN chmod +x /entrypoint.sh
 
 # Expose default proxy's port
-EXPOSE 25577
+EXPOSE 25565

@@ -6,7 +6,7 @@ services:
     network_mode: bridge
     
     ports:
-      - "25565:25577"
+      - "25565:25565"
     volumes:
       - velocity:/velocity
 
