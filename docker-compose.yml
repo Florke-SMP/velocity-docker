@@ -1,7 +1,9 @@
 services:
   velocity:
-    image: velocity:latest
-    build: .
+    image: ghcr.io/florke-smp/velocity:3.4.0-SNAPSHOT
+    container_name: velocity
+    restart: unless-stopped
+    
     ports:
       - "25565:25565"
     volumes:
