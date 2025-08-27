@@ -1,9 +1,9 @@
 name: Latest Velocity
 
 on:
-  # Trigger every day at 2 AM UTC
+  # Trigger every Wednesday at 2 AM UTC
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 2 * * 3'
   
   # Allow manual triggering
   workflow_dispatch:
