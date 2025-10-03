@@ -55,6 +55,7 @@ jobs:
         echo "Velocity URL: $VELOCITY_URL"
 
         # Save to .buildargs for use in dockerfile
+        echo "Building .buildargs file..."
         echo "LATEST_VERSION=$LATEST_VERSION" > .buildargs
         echo "VELOCITY_URL=$VELOCITY_URL" >> .buildargs
         echo "SHA256=$SHA256" >> .buildargs
@@ -62,19 +63,23 @@ jobs:
         source .buildargs
         
         echo "Building with:"
-        echo "VELOCITY_URL: $VELOCITY_URL"
-        echo "SHA256: $SHA256"
+        echo "VELOCITY_URL: ${VELOCITY_URL}"
+        echo "SHA256: ${SHA256}"
+        echo "LATEST_VERSION: ${LATEST_VERSION}"
+        echo "LATEST_BUILD: ${LATEST_BUILD}"
         
         # Build the Docker image
         docker build \
-          --build-arg VELOCITY_URL="$VELOCITY_URL" \
-          --build-arg SHA256="$SHA256" \
+          --build-arg VELOCITY_URL="${VELOCITY_URL}" \
+          --build-arg SHA256="${SHA256}" \
           -t ghcr.io/florke-smp/velocity:latest \
-          -t ghcr.io/florke-smp/velocity:$LATEST_VERSION \
+          -t ghcr.io/florke-smp/velocity:${LATEST_VERSION} \
+          -t ghcr.io/florke-smp/velocity:${LATEST_VERSION}-${LATEST_BUILD} \
           .
 
         docker push ghcr.io/florke-smp/velocity:latest
-        docker push ghcr.io/florke-smp/velocity:$LATEST_VERSION
+        docker push ghcr.io/florke-smp/velocity:${LATEST_VERSION}
+        docker push ghcr.io/florke-smp/velocity:${LATEST_VERSION}-${LATEST_BUILD}
     
     - name: Docker system prune
       run: docker system prune -f
